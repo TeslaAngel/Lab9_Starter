@@ -88,6 +88,22 @@
   </main>
 
   <script>
+
+    //custom error class
+    class InvalidInputError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "InvalidInputError";
+      }
+    }
+
+    class DivideByZeroError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "DivideByZeroError";
+      }
+    }
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -99,7 +115,7 @@
       try {
         // Validate numbers
         if (isNaN(firstNum) || isNaN(secondNum)) {
-          throw new Error("Inputs must be valid numbers.");
+          throw new InvalidInputError("Both inputs must be valid numbers.");
         }
 
         const num1 = Number(firstNum);
@@ -107,7 +123,7 @@
 
         // Division by zero case
         if (operator === '/' && num2 === 0) {
-          throw new Error("Cannot divide by zero.");
+          throw new DivideByZeroError("Cannot divide by zero.");
         }
 
         const result = eval(`${num1} ${operator} ${num2}`);

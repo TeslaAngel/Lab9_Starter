@@ -102,6 +102,93 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    const sampleData = { name: "baby a", age: 1, role: "Engineer" };
+    const sampleArray = [
+      { name: "senior", age: 1 },
+      { name: "junior", age: 99 },
+      { name: "Carol", age: 35 }
+    ];
+
+    let count = 0;
+
+    errorBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const label = btn.textContent;
+
+        switch (label) {
+          case "Console Log":
+            console.log("This is a console.log example:", sampleData);
+            break;
+
+          case "Console Error":
+            console.error("This is a console.error example.");
+            break;
+
+          case "Console Count":
+            console.count("Console Count Label");
+            break;
+
+          case "Console Warn":
+            console.warn("This is a console.warn example.");
+            break;
+
+          case "Console Assert":
+            const condition = 2 + 2 === 5;
+            console.assert(condition, "Assertion failed: 2 + 2 !== 5");
+            break;
+
+          case "Console Clear":
+            console.clear();
+            break;
+
+          case "Console Dir":
+            console.dir(document.body); // Shows an interactive list of properties
+            break;
+
+          case "Console dirxml":
+            console.dirxml(document.body); // Shows an XML-like tree of the DOM
+            break;
+
+          case "Console Group Start":
+            console.group("Demo Group");
+            console.log("Inside group: message 1");
+            console.log("Inside group: message 2");
+            break;
+
+          case "Console Group End":
+            console.groupEnd("Demo Group");
+            break;
+
+          case "Console Table":
+            console.table(sampleArray);
+            break;
+
+          case "Start Timer":
+            console.time("Demo Timer");
+            break;
+
+          case "End Timer":
+            console.timeEnd("Demo Timer");
+            break;
+
+          case "Console Trace":
+            function a() {
+              function b() {
+                function c() {
+                  console.trace("Trace example:");
+                }
+                c();
+              }
+              b();
+            }
+            a();
+            break;
+        }
+      });
+    });
+
+    
+
   </script>
 </body>
 

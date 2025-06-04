@@ -87,6 +87,15 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "eff16b87ef4943d0bdafd9267f745fac",
+      application: "lab-9"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
   <script>
 
     //custom error class
@@ -103,6 +112,14 @@
         this.name = "DivideByZeroError";
       }
     }
+
+    window.onerror = function (message, source, lineno, colno, error) {
+      console.log("Global error caught!");
+      console.log("Message:", message);
+      console.log("Source:", source);
+      console.log("Line:", lineno, "Column:", colno);
+      console.log("Error object:", error);
+    };
 
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -221,6 +238,11 @@
               b();
             }
             a();
+            break;
+          
+          case "Trigger a Global Error":
+            // This will trigger a ReferenceError, which is caught by window.onerror
+            nonExistentFunctionCall();
             break;
         }
       });
